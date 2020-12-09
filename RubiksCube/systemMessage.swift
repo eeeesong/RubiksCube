@@ -16,8 +16,9 @@ struct SystemMessage {
       G  B  B
     """
     
-    static let inputError = "값을 모두 입력해주세요"
+    static let inputError = "값을 입력해주세요"
     static let actionError = "올바른 값을 입력해주세요"
+    static let noError = "정상 작동"
     
 //    static func successMessage(_ word: String, _ moveBy: String, _ direction: String,
 //                               _ result: String) -> String {
