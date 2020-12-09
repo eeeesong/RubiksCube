@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E47A986A2580A36F00A1550B /* systemMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47A98692580A36F00A1550B /* systemMessage.swift */; };
+		E47A986F2580A6A200A1550B /* stepTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47A986E2580A6A200A1550B /* stepTwo.swift */; };
 		E48657FA25807332005EBB58 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48657F925807332005EBB58 /* main.swift */; };
 		E4865802258073AE005EBB58 /* stepOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4865801258073AE005EBB58 /* stepOne.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		E47A98692580A36F00A1550B /* systemMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = systemMessage.swift; sourceTree = "<group>"; };
+		E47A986E2580A6A200A1550B /* stepTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stepTwo.swift; sourceTree = "<group>"; };
 		E48657F625807332005EBB58 /* RubiksCube */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RubiksCube; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48657F925807332005EBB58 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E4865801258073AE005EBB58 /* stepOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stepOne.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			children = (
 				E48657F925807332005EBB58 /* main.swift */,
 				E4865801258073AE005EBB58 /* stepOne.swift */,
+				E47A986E2580A6A200A1550B /* stepTwo.swift */,
 				E47A98692580A36F00A1550B /* systemMessage.swift */,
 			);
 			path = RubiksCube;
@@ -127,6 +130,7 @@
 			files = (
 				E4865802258073AE005EBB58 /* stepOne.swift in Sources */,
 				E48657FA25807332005EBB58 /* main.swift in Sources */,
+				E47A986F2580A6A200A1550B /* stepTwo.swift in Sources */,
 				E47A986A2580A36F00A1550B /* systemMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
