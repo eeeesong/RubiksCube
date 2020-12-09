@@ -16,13 +16,13 @@ struct SystemMessage {
       G  B  B
     """
     
-    static let inputError = "값을 입력해주세요"
-    static let actionError = "올바른 값을 입력해주세요"
+    static let prompt = "\nCUBE👉🏻"
+    static let quit = "종료 액션 Q가 입력되었습니다. Bye~🙋"
+    static let inputError = "값을 입력해주세요\n" + info
+    static let actionError = "올바른 값을 입력해주세요\n" + info
     static let noError = "정상 작동"
     
-//    static func successMessage(_ word: String, _ moveBy: String, _ direction: String,
-//                               _ result: String) -> String {
-//        return "👉🏻 \(word)가 \(moveBy)만큼 \(direction) 방향으로 움직입니다.\n결과: \(result)"
-//    }
-    
+    static func successMessage(_ action: String, _ result: String) -> String {
+        return "\n액션 \(action)(을)를 적용한 큐브:\n\(result)"
+    }
 }

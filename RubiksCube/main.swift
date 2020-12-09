@@ -8,22 +8,22 @@ print(SystemMessage.startingCube)
 
 main()
 
+
 func main() {
-    print("\nCUBE👉🏻", terminator: "")
+    print(SystemMessage.prompt, terminator: "")
     
     let input = readLine() ?? ""
     let checkInput = model.actionCheck(for: input)
     
-    //잘못된 입력일 경우 다시 시작
     guard checkInput == SystemMessage.noError else {
-        print(checkInput + "\n" + SystemMessage.info)
+        print(checkInput)
         return main()
     }
 
-    //올바른 입력일 경우 차례로 액션 실행
     let actionList = model.actionList
     changeCube(for: model.startingCube, actionList: actionList)
 }
+
 
 func changeCube(for cube: [[String]], actionList: [String]) {
     var cubeNow = cube
@@ -31,17 +31,8 @@ func changeCube(for cube: [[String]], actionList: [String]) {
     let totalDelayAmount = Double(actionList.count)
     
     for action in actionList {
-        
         Timer.scheduledTimer(withTimeInterval: delayAmount , repeats: false) { (timer) in
-
-            guard action != "Q" else {
-                print("Q가 입력되어 프로그램을 종료합니다. Bye~🙋")
-                exit(9)
-            }
-            let result = model.startAction(for: action, cube: cubeNow)
-            let resultToString = model.cubeToString(result)
-            cubeNow = result
-            print("\n액션 \(action)를 적용한 큐브:\n\(resultToString)")
+            cubeNow = getNewCube(with: action, cube: cubeNow)
         }
         delayAmount += 1
     }
@@ -50,5 +41,18 @@ func changeCube(for cube: [[String]], actionList: [String]) {
         main()
     }
 }
+
+
+func getNewCube(with action: String, cube: [[String]]) -> [[String]] {
+    guard action != "Q" else {
+        print(SystemMessage.quit)
+        exit(EXIT_SUCCESS)
+    }
+    let result = model.startAction(for: action, cube: cube)
+    let resultToString = model.cubeToString(result)
+    print(SystemMessage.successMessage(action, resultToString))
+    return result
+}
+
 
 RunLoop.main.run()

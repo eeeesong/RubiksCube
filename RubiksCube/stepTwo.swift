@@ -128,7 +128,7 @@ struct StepTwo {
     }
     
     func actionQ(cube: [[String]]) -> [[String]] {
-        return cube //전 동작의 것 유지
+        return cube
     }
     
     
