@@ -1,6 +1,8 @@
 
 import Foundation
 
+let model = StepOne()
+
 print("""
     📍변경할 문자(word)
     📍움직일 정도(moveBy) * -100 이상 100 미만의 정수
@@ -14,7 +16,9 @@ let word = input.components(separatedBy: " ")[0]
 let moveBy = input.components(separatedBy: " ")[1]
 let direction = input.components(separatedBy: " ")[2]
 
-print("👉🏻 \(word)가 \(moveBy)만큼 \(direction) 방향으로 움직입니다.")
+let result = model.getResult(word: word, moveBy: Int(moveBy)!, direction: Character(direction))
+
+print("👉🏻 \(word)가 \(moveBy)만큼 \(direction) 방향으로 움직입니다.\n결과: \(result)")
 
 
 
