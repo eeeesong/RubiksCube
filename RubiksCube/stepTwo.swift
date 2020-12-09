@@ -3,7 +3,14 @@ import Foundation
 
 struct StepTwo {
     
+    let startingCube = [
+        ["R", "R", "W"],
+        ["G", "C", "W"],
+        ["G", "B", "B"]
+    ]
+    
     var actionList = [String]()
+    
     
     //MARK: - input의 유효성 체크, 액션 리스트 만들기
     mutating func actionCheck(for input: String) -> String {
@@ -48,4 +55,79 @@ struct StepTwo {
     
     
     //MARK: - 큐브 액션
+    func startAction(for action: String, cube: [[String]]) -> [[String]] {
+
+        switch action {
+        case "U":
+            return actionU(isReverse: false, cube: cube)
+        case "U'":
+            return actionU(isReverse: true, cube: cube)
+        case "R":
+            return actionR(isReverse: false, cube: cube)
+        case "R'":
+            return actionR(isReverse: true, cube: cube)
+        case "L":
+            return actionL(isReverse: false, cube: cube)
+        case "L'":
+            return actionL(isReverse: true, cube: cube)
+        case "B":
+            return actionB(isReverse: false, cube: cube)
+        case "B'":
+            return actionB(isReverse: true, cube: cube)
+        default:
+            return actionQ(cube: cube)
+        }
+    }
+    
+    func actionU(isReverse: Bool, cube: [[String]]) -> [[String]] {
+        var cube = cube
+        let tryCount = isReverse ? 1 : 2
+        for _ in 1...tryCount {
+            cube[0].insert(cube[0][2], at: 0)
+            cube[0].removeLast()
+        }
+        return cube
+    }
+
+    func actionR(isReverse: Bool, cube: [[String]]) -> [[String]] {
+        var cube = cube
+        let tryCount = isReverse ? 2 : 1
+        for _ in 1...tryCount {
+            cube[2].insert(cube[0][2], at: 2)
+            cube[1].insert(cube[2][3], at: 2)
+            cube[0].insert(cube[1][3], at: 2)
+            cube[0].removeLast()
+            cube[1].removeLast()
+            cube[2].removeLast()
+        }
+        return cube
+    }
+
+    func actionL(isReverse: Bool, cube: [[String]]) -> [[String]] {
+        var cube = cube
+        let tryCount = isReverse ? 1 : 2
+        for _ in 1...tryCount {
+            cube[2].insert(cube[0][0], at: 1)
+            cube[1].insert(cube[2][0], at: 1)
+            cube[0].insert(cube[1][0], at: 1)
+            cube[0].removeFirst()
+            cube[1].removeFirst()
+            cube[2].removeFirst()
+        }
+        return cube
+    }
+
+    func actionB(isReverse: Bool, cube: [[String]]) -> [[String]] {
+        var cube = cube
+        let tryCount = isReverse ? 2 : 1
+        for _ in 1...tryCount {
+            cube[2].insert(cube[2][2], at: 0)
+            cube[2].removeLast()
+        }
+        return cube
+    }
+    
+    func actionQ(cube: [[String]]) -> [[String]] {
+        return cube //전 동작의 것 유지
+    }
 }
