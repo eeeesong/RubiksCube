@@ -21,6 +21,7 @@ var cubeNow = model.startingCube
 
 for action in actionList {
     let result = model.startAction(for: action, cube: cubeNow)
-    print("액션: \(action)\n 현재 큐브:\n\(result)")
     cubeNow = result
+    let resultToString = model.cubeToString(result)
+    print("액션 \(action)를 적용한 큐브:\n\(resultToString)\n")
 }

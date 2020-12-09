@@ -130,4 +130,15 @@ struct StepTwo {
     func actionQ(cube: [[String]]) -> [[String]] {
         return cube //전 동작의 것 유지
     }
+    
+    
+    //MARK: - 큐브 -> 문자열
+    func cubeToString(_ cube: [[String]]) -> String {
+        
+        let firstLine = cube[0].reduce(""){ $0 + "  " + $1 }
+        let secondLine = cube[1].reduce(""){ $0 + "  " + $1 }
+        let lastLine = cube[2].reduce(""){ $0 + "  " + $1 }
+        
+        return firstLine + "\n" + secondLine + "\n" + lastLine
+    }
 }
