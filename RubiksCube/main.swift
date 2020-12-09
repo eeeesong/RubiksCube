@@ -5,6 +5,7 @@ var model = StepTwo()
 
 print(SystemMessage.info)
 print(SystemMessage.startingCube)
+print("\nCUBE👉🏻", terminator: "")
 
 let input = readLine() ?? ""
 let checkInput = model.actionCheck(for: input)
@@ -16,12 +17,19 @@ guard checkInput == SystemMessage.noError else {
 }
 
 //올바른 입력일 경우 차례로 액션 실행
-let actionList = model.actionList
+var actionList = model.actionList
 var cubeNow = model.startingCube
+var delayAmount = 0.0
 
 for action in actionList {
-    let result = model.startAction(for: action, cube: cubeNow)
-    cubeNow = result
-    let resultToString = model.cubeToString(result)
-    print("액션 \(action)를 적용한 큐브:\n\(resultToString)\n")
+    Timer.scheduledTimer(withTimeInterval: 1.0 * delayAmount , repeats: false) { (timer) in
+        let result = model.startAction(for: action, cube: cubeNow)
+        let resultToString = model.cubeToString(result)
+        cubeNow = result
+        print("\n액션 \(action)를 적용한 큐브:\n\(resultToString)")
+        actionList.removeFirst()
+    }
+    delayAmount += 1
 }
+
+RunLoop.main.run(until: Date(timeIntervalSinceNow: delayAmount))
