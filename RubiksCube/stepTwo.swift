@@ -3,7 +3,7 @@ import Foundation
 
 struct StepTwo {
     
-    let startingCube = [
+    var startingCube = [
         ["R", "R", "W"],
         ["G", "C", "W"],
         ["G", "B", "B"]
