@@ -21,7 +21,8 @@ func main() {
     }
 
     let actionList = model.actionList
-    changeCube(for: model.startingCube, actionList: actionList)
+    print(actionList)
+//    changeCube(for: model.startingCube, actionList: actionList)
 }
 
 

@@ -34,7 +34,9 @@ struct StepThree {
             if v == "'" && i > 0 {
                 stringArray[i-1].append(v)
                 stringArray[i] = "delete"
-            } //리버스 입력을 받은 경우 '를 앞의 문자에 붙이고 "delete" 삽입. 그냥 삭제할 경우 index 오류 발생
+            } else if v == "2" && i > 0 {
+                stringArray[i] = stringArray[i-1]
+            } //2가 입력될 경우 앞의 액션을 한번 더 실행
         }
         stringArray = stringArray.filter{ $0 != "delete" }
         return stringArray
@@ -43,7 +45,7 @@ struct StepThree {
     
     func makeFilteredAction(for array: [String]) -> [String] {
         var filterArray = [String]()
-        let allAction = ["U","R","L","B","Q","U\'","R\'","L\'","B\'"]
+        let allAction = ["F","F\'","R","R\'","U","U\'","B","B\'","L","L\'","D","D\'","Q"]
         
         filterArray = array.filter {(s: String) -> Bool in
             return allAction.contains(s)
