@@ -12,7 +12,7 @@ struct SystemMessage {
     """
     
     static let cubeNow = "\n현재 큐브:\n"
-    static let prompt = "\nCUBE👉🏻"
+    static let prompt = "CUBE👉🏻"
     static let quit = "종료 액션 Q가 입력되었습니다. Bye~🙋"
     static let inputError = "값을 입력해주세요\n" + info
     static let actionError = "올바른 값을 입력해주세요\n" + info

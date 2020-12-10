@@ -64,77 +64,38 @@ struct StepThree {
     
     //MARK: - 큐브 액션
     func startAction(for action: String, cube: [[String]]) -> [[String]] {
-
-        switch action {
-        case "U":
-            return actionU(isReverse: false, cube: cube)
-        case "U'":
-            return actionU(isReverse: true, cube: cube)
-        case "R":
-            return actionR(isReverse: false, cube: cube)
-        case "R'":
-            return actionR(isReverse: true, cube: cube)
-        case "L":
-            return actionL(isReverse: false, cube: cube)
-        case "L'":
-            return actionL(isReverse: true, cube: cube)
-        case "B":
-            return actionB(isReverse: false, cube: cube)
-        case "B'":
-            return actionB(isReverse: true, cube: cube)
-        default:
+        
+        if action == "F" {
+            return actionF(isReverse: false, cube: cube)
+        } else if action == "F\'" {
+            return actionF(isReverse: true, cube: cube)
+        } else {
             return actionQ(cube: cube)
         }
     }
     
-    func actionU(isReverse: Bool, cube: [[String]]) -> [[String]] {
+    func actionF(isReverse: Bool, cube: [[String]]) -> [[String]] {
         var cube = cube
-        let tryCount = isReverse ? 1 : 2
+        let tryCount = isReverse ? 3 : 1
+        
         for _ in 1...tryCount {
-            cube[0].insert(cube[0][2], at: 0)
-            cube[0].removeLast()
+            let temp = cube[2]
+            
+            cube[2] = [cube[11][2],cube[7][2],cube[3][2]]
+            
+            cube[3][2] = cube[15][0]
+            cube[7][2] = cube[15][1]
+            cube[11][2] = cube[15][2]
+            
+            cube[15] = [cube[13][0],cube[9][0],cube[5][0]]
+            
+            cube[5][0] = temp[2]
+            cube[9][0] = temp[1]
+            cube[13][0] = temp[0]
         }
         return cube
     }
 
-    func actionR(isReverse: Bool, cube: [[String]]) -> [[String]] {
-        var cube = cube
-        let tryCount = isReverse ? 2 : 1
-        for _ in 1...tryCount {
-            cube[2].insert(cube[0][2], at: 2)
-            cube[1].insert(cube[2][3], at: 2)
-            cube[0].insert(cube[1][3], at: 2)
-            cube[0].removeLast()
-            cube[1].removeLast()
-            cube[2].removeLast()
-        }
-        return cube
-    }
-
-    func actionL(isReverse: Bool, cube: [[String]]) -> [[String]] {
-        var cube = cube
-        let tryCount = isReverse ? 1 : 2
-        for _ in 1...tryCount {
-            cube[2].insert(cube[0][0], at: 1)
-            cube[1].insert(cube[2][0], at: 1)
-            cube[0].insert(cube[1][0], at: 1)
-            cube[0].removeFirst()
-            cube[1].removeFirst()
-            cube[2].removeFirst()
-        }
-        return cube
-    }
-
-    func actionB(isReverse: Bool, cube: [[String]]) -> [[String]] {
-        var cube = cube
-        let tryCount = isReverse ? 2 : 1
-        for _ in 1...tryCount {
-            cube[2].insert(cube[2][2], at: 0)
-            cube[2].removeLast()
-        }
-        return cube
-    }
-    
     func actionQ(cube: [[String]]) -> [[String]] {
         return cube
     }
@@ -158,7 +119,7 @@ struct StepThree {
         return """
             \(space)\(firstLineA)\n\(space)\(firstLineB)\n\(space)\(firstLineC)\n
             \(secondLineA)\n\(secondLineB)\n\(secondLineC)\n
-            \(space)\(lastLineA)\n\(space)\(lastLineB)\n\(space)\(lastLineC)\n
+            \(space)\(lastLineA)\n\(space)\(lastLineB)\n\(space)\(lastLineC)
             """
     }
     
