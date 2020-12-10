@@ -2,9 +2,17 @@
 struct StepThree {
     
     var startingCube = [
-        ["R", "R", "W"],
-        ["G", "C", "W"],
-        ["G", "B", "B"]
+                                ["B", "B", "B"],
+                                ["B", "B", "B"],
+                                ["B", "B", "B"],
+        
+        ["W", "W", "W"], ["O", "O", "O"], ["G", "G", "G"], ["Y", "Y", "Y"],
+        ["W", "W", "W"], ["O", "O", "O"], ["G", "G", "G"], ["Y", "Y", "Y"],
+        ["W", "W", "W"], ["O", "O", "O"], ["G", "G", "G"], ["Y", "Y", "Y"],
+        
+                                ["R", "R", "R"],
+                                ["R", "R", "R"],
+                                ["R", "R", "R"]
     ]
     
     var actionList = [String]()
@@ -134,11 +142,36 @@ struct StepThree {
     
     //MARK: - 큐브 -> 문자열
     func cubeToString(_ cube: [[String]]) -> String {
+
+        let firstLineA = cube[0].reduce(""){ $0 + " " + $1 }
+        let firstLineB = cube[1].reduce(""){ $0 + " " + $1 }
+        let firstLineC = cube[2].reduce(""){ $0 + " " + $1 }
+        let secondLineA = flatMultiLine(cube, startFrom: 3).reduce(""){ $0 + " " + $1 }
+        let secondLineB = flatMultiLine(cube, startFrom: 7).reduce(""){ $0 + " " + $1 }
+        let secondLineC = flatMultiLine(cube, startFrom: 11).reduce(""){ $0 + " " + $1 }
+        let lastLineA = cube[15].reduce(""){ $0 + " " + $1 }
+        let lastLineB = cube[16].reduce(""){ $0 + " " + $1 }
+        let lastLineC = cube[17].reduce(""){ $0 + " " + $1 }
         
-        let firstLine = cube[0].reduce(""){ $0 + "  " + $1 }
-        let secondLine = cube[1].reduce(""){ $0 + "  " + $1 }
-        let lastLine = cube[2].reduce(""){ $0 + "  " + $1 }
+        let space = "\t\t\t\t"
         
-        return firstLine + "\n" + secondLine + "\n" + lastLine
+        return """
+            \(space)\(firstLineA)\n\(space)\(firstLineB)\n\(space)\(firstLineC)\n
+            \(secondLineA)\n\(secondLineB)\n\(secondLineC)\n
+            \(space)\(lastLineA)\n\(space)\(lastLineB)\n\(space)\(lastLineC)\n
+            """
+    }
+    
+    func flatMultiLine(_ cube: [[String]], startFrom arrayNum: Int) -> [String] {
+    
+        var cubeToChange = cube
+        var result = [String]()
+        let space = "\t  "
+        
+        for a in arrayNum...arrayNum+3 {
+            cubeToChange[a].append(space)
+            result.append(contentsOf: cubeToChange[a])
+        }
+        return result
     }
 }

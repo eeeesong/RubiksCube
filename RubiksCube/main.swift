@@ -4,7 +4,7 @@ import Foundation
 var model = StepThree()
 
 print(SystemMessage.info)
-print(SystemMessage.startingCube)
+print(SystemMessage.cubeNow + model.cubeToString(model.startingCube))
 
 main()
 

@@ -11,23 +11,7 @@ struct SystemMessage {
     🙋Q - 프로그램 종료
     """
     
-    static let startingCube = """
-    \n현재 큐브:
-
-                      B B B
-                      B B B
-                      B B B
-
-       W W W     O O O     G G G     Y Y Y
-       W W W     O O O     G G G     Y Y Y
-       W W W     O O O     G G G     Y Y Y
-       
-                      R R R
-                      R R R
-                      R R R
-
-    """
-    
+    static let cubeNow = "\n현재 큐브:\n"
     static let prompt = "\nCUBE👉🏻"
     static let quit = "종료 액션 Q가 입력되었습니다. Bye~🙋"
     static let inputError = "값을 입력해주세요\n" + info
