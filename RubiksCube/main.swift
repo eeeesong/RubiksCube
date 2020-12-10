@@ -1,7 +1,7 @@
 
 import Foundation
 
-var model = StepTwo()
+var model = StepThree()
 
 print(SystemMessage.info)
 print(SystemMessage.startingCube)
