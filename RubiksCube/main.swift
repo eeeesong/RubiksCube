@@ -52,6 +52,7 @@ func getNewCube(with action: String, cube: [[String]]) -> [[String]] {
     let result = cubeAction.startAction(for: action, cube: cube)
     let resultToString = model.cubeToString(result)
     print(SystemMessage.successMessage(action, resultToString))
+    SystemMessage.actionCount += 1
     return result
 }
 
