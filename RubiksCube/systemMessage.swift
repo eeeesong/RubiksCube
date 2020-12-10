@@ -2,18 +2,30 @@
 struct SystemMessage {
     
     static let info = """
-    ⚡️R/R': 가장 오른쪽 줄 이동
-    ⚡️L/L': 가장 왼쪽 줄 이동
-    ⚡️U/U': 가장 윗줄 이동
-    ⚡️B/B': 가장 아랫 줄 이동
-    ⚡️Q: 프로그램 종료
+    ⚡️F/F' – 앞 (Front)
+    ⚡️R/R' – 오른쪽 (Right)
+    ⚡️U/U' – 위 (Up)
+    ⚡️B/B' – 뒤 (Back)
+    ⚡️L/L' – 왼쪽 (Left)
+    ⚡️D/D' – 아랫쪽 (Down)
+    🙋Q - 프로그램 종료
     """
     
     static let startingCube = """
     \n현재 큐브:
-      R  R  W
-      G  C  W
-      G  B  B
+
+                      B B B
+                      B B B
+                      B B B
+
+       W W W     O O O     G G G     Y Y Y
+       W W W     O O O     G G G     Y Y Y
+       W W W     O O O     G G G     Y Y Y
+       
+                      R R R
+                      R R R
+                      R R R
+
     """
     
     static let prompt = "\nCUBE👉🏻"
