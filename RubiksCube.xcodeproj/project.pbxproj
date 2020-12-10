@@ -10,6 +10,7 @@
 		E47A986A2580A36F00A1550B /* systemMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47A98692580A36F00A1550B /* systemMessage.swift */; };
 		E48657FA25807332005EBB58 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48657F925807332005EBB58 /* main.swift */; };
 		E48AA7382581A7DF00DC660F /* stepThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48AA7372581A7DF00DC660F /* stepThree.swift */; };
+		E48AA73C2581BE5700DC660F /* cubeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48AA73B2581BE5700DC660F /* cubeAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,7 @@
 		E48657F625807332005EBB58 /* RubiksCube */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RubiksCube; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48657F925807332005EBB58 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E48AA7372581A7DF00DC660F /* stepThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stepThree.swift; sourceTree = "<group>"; };
+		E48AA73B2581BE5700DC660F /* cubeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cubeAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			children = (
 				E48657F925807332005EBB58 /* main.swift */,
 				E48AA7372581A7DF00DC660F /* stepThree.swift */,
+				E48AA73B2581BE5700DC660F /* cubeAction.swift */,
 				E47A98692580A36F00A1550B /* systemMessage.swift */,
 			);
 			path = RubiksCube;
@@ -125,6 +128,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E48AA73C2581BE5700DC660F /* cubeAction.swift in Sources */,
 				E48657FA25807332005EBB58 /* main.swift in Sources */,
 				E48AA7382581A7DF00DC660F /* stepThree.swift in Sources */,
 				E47A986A2580A36F00A1550B /* systemMessage.swift in Sources */,

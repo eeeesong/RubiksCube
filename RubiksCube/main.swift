@@ -2,6 +2,7 @@
 import Foundation
 
 var model = StepThree()
+var cubeAction = CubeAction()
 
 print(SystemMessage.info)
 print(SystemMessage.cubeNow + model.cubeToString(model.startingCube))
@@ -48,7 +49,7 @@ func getNewCube(with action: String, cube: [[String]]) -> [[String]] {
         print(SystemMessage.quit)
         exit(EXIT_SUCCESS)
     }
-    let result = model.startAction(for: action, cube: cube)
+    let result = cubeAction.startAction(for: action, cube: cube)
     let resultToString = model.cubeToString(result)
     print(SystemMessage.successMessage(action, resultToString))
     return result
