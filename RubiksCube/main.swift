@@ -4,7 +4,9 @@ import Foundation
 var model = StepThree()
 var cubeAction = CubeAction()
 
+let startTime = Int(Date().timeIntervalSince1970)
 let shuffledCube = cubeAction.getCubeShuffled(model.cubeSolved)
+
 model.startingCube = shuffledCube
 
 print(SystemMessage.info)
@@ -50,6 +52,7 @@ func changeCube(for cube: [[String]], actionList: [String]) {
 func getNewCube(with action: String, cube: [[String]]) -> [[String]] {
     guard action != "Q" else {
         print(SystemMessage.quit)
+        print(calcTime(from: startTime))
         exit(EXIT_SUCCESS)
     }
     
@@ -67,6 +70,16 @@ func checkAnswer(for cube: [[String]]) {
         print(SystemMessage.doneMessage)
         exit(EXIT_SUCCESS)
     }
+}
+
+func calcTime(from startTime: Int) -> String {
+    let endTime = Int(Date().timeIntervalSince1970)
+    
+    let timeInSecond = endTime - startTime
+    let minute = timeInSecond / 60
+    let second = timeInSecond % 60
+    
+    return "경과 시간: \(minute):\(second)"
 }
 
 RunLoop.main.run()
