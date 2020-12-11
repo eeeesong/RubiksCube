@@ -2,56 +2,46 @@
 
 struct CubeAction {
     
+    let defaultAction = ["F","R","U","B","L","D"]
     
+    //MARK: - 큐브 섞기
     func getCubeShuffled(_ cube: [[String]]) -> [[String]] {
-        
         var newCube = cube
-        let allAction = ["F","R","U","B","L","D"]
         let randomNumber = Int.random(in: 50...200)
         
         var actionArray = Array(repeating: "X", count: randomNumber)
         
         for n in 0...randomNumber-1 {
-            actionArray[n] = allAction.randomElement()!
+            actionArray[n] = defaultAction.randomElement()!
             newCube = startAction(for: actionArray[n], cube: newCube)
         }
         return newCube
     }
     
-    
+    //MARK: - 각 입력에 맞는 액션 수행
     func startAction(for action: String, cube: [[String]]) -> [[String]] {
-        
+        let isReverse = defaultAction.contains(action) ? false : true
+    
         switch action {
-        case "F":
-            return actionF(isReverse: false, cube: cube)
-        case "F\'":
-            return actionF(isReverse: true, cube: cube)
-        case "B":
-            return actionB(isReverse: false, cube: cube)
-        case "B\'":
-            return actionB(isReverse: true, cube: cube)
-        case "D":
-            return actionD(isReverse: false, cube: cube)
-        case "D\'":
-            return actionD(isReverse: true, cube: cube)
-        case "U":
-            return actionU(isReverse: false, cube: cube)
-        case "U\'":
-            return actionU(isReverse: true, cube: cube)
-        case "R":
-            return actionR(isReverse: false, cube: cube)
-        case "R\'":
-            return actionR(isReverse: true, cube: cube)
-        case "L":
-            return actionL(isReverse: false, cube: cube)
-        case "L\'":
-            return actionL(isReverse: true, cube: cube)
+        case "F","F\'":
+            return actionF(isReverse, cube)
+        case "B","B\'":
+            return actionB(isReverse, cube)
+        case "D","D\'":
+            return actionD(isReverse, cube)
+        case "U","U\'":
+            return actionU(isReverse, cube)
+        case "R","R\'":
+            return actionR(isReverse, cube)
+        case "L","L\'":
+            return actionL(isReverse, cube)
         default:
-            return actionQ(cube: cube)
+            return actionQ(cube)
         }
     }
     
-    func actionF(isReverse: Bool, cube: [[String]]) -> [[String]] {
+    //MARK: - 큐브 액션
+    func actionF(_ isReverse: Bool,_ cube: [[String]]) -> [[String]] {
         var cube = cube
         let tryCount = isReverse ? 3 : 1
         
@@ -75,7 +65,7 @@ struct CubeAction {
         return cube
     }
     
-    func actionB(isReverse: Bool, cube: [[String]]) -> [[String]] {
+    func actionB(_ isReverse: Bool,_ cube: [[String]]) -> [[String]] {
         var cube = cube
         let tryCount = isReverse ? 3 : 1
         
@@ -99,7 +89,7 @@ struct CubeAction {
         return cube
     }
     
-    func actionR(isReverse: Bool, cube: [[String]]) -> [[String]] {
+    func actionR(_ isReverse: Bool,_ cube: [[String]]) -> [[String]] {
         var cube = cube
         let tryCount = isReverse ? 3 : 1
         
@@ -127,7 +117,7 @@ struct CubeAction {
         return cube
     }
     
-    func actionL(isReverse: Bool, cube: [[String]]) -> [[String]] {
+    func actionL(_ isReverse: Bool,_ cube: [[String]]) -> [[String]] {
         var cube = cube
         let tryCount = isReverse ? 3 : 1
         
@@ -155,7 +145,7 @@ struct CubeAction {
         return cube
     }
     
-    func actionU(isReverse: Bool, cube: [[String]]) -> [[String]] {
+    func actionU(_ isReverse: Bool,_ cube: [[String]]) -> [[String]] {
         var cube = cube
         let tryCount = isReverse ? 3 : 1
 
@@ -170,7 +160,7 @@ struct CubeAction {
         return cube
     }
     
-    func actionD(isReverse: Bool, cube: [[String]]) -> [[String]] {
+    func actionD(_ isReverse: Bool,_ cube: [[String]]) -> [[String]] {
         var cube = cube
         let tryCount = isReverse ? 3 : 1
 
@@ -185,7 +175,7 @@ struct CubeAction {
         return cube
     }
     
-    func actionQ(cube: [[String]]) -> [[String]] {
+    func actionQ(_ cube: [[String]]) -> [[String]] {
         return cube
     }
     

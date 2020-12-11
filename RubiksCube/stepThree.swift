@@ -19,7 +19,7 @@ struct StepThree {
     var actionList = [String]()
     
     
-    //MARK: - input의 유효성 체크, 액션 리스트 만들기
+    //MARK: - 입력 액션 점검
     mutating func actionCheck(for input: String) -> String {
         
         guard input != "" else { return SystemMessage.inputError }
@@ -63,7 +63,7 @@ struct StepThree {
     }
 
     
-    //MARK: - 큐브 -> 문자열
+    //MARK: - 큐브 -> 문자열 변경
     func cubeToString(_ cube: [[String]]) -> String {
 
         let firstLineA = cube[0].reduce(""){ $0 + " " + $1 }

@@ -31,6 +31,7 @@ func main() {
 }
 
 
+//MARK: - 큐브 액션 수행 관련
 func changeCube(for cube: [[String]], actionList: [String]) {
     var cubeNow = cube
     var delayAmount = 0.0
@@ -50,9 +51,7 @@ func changeCube(for cube: [[String]], actionList: [String]) {
 
 
 func getNewCube(with action: String, cube: [[String]]) -> [[String]] {
-    guard action != "Q" else {
-        calcTime(from: startTime)
-        print(SystemMessage.quitMessage)
+    guard !checkQuit(for: action) else {
         exit(EXIT_SUCCESS)
     }
     
@@ -63,6 +62,18 @@ func getNewCube(with action: String, cube: [[String]]) -> [[String]] {
     
     checkAnswer(for: result)
     return result
+}
+
+
+//MARK: - 프로그램 종료 관련
+func checkQuit(for action: String) -> Bool {
+    if action == "Q" {
+        calcTime(from: startTime)
+        print(SystemMessage.quitMessage)
+        return true
+    } else {
+        return false
+    }
 }
 
 func checkAnswer(for cube: [[String]]) {
