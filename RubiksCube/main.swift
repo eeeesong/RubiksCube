@@ -14,22 +14,22 @@ main()
 
 //MARK: - 명령 입력 관련
 func main() {
-    print(SystemMessage.prompt, terminator: "")
+    print(SM.prompt, terminator: "")
     
     let input = readLine() ?? ""
     let inputUppercased = input.uppercased()
     
     switch inputUppercased {
-    case "HELP":
+    case SM.help:
         printInfo()
         main()
-    case "SHUFFLE":
+    case SM.shuffle:
         shuffleCube()
         main()
     default:
         let checkInput = model.actionCheck(for: inputUppercased)
         
-        guard checkInput == SystemMessage.noError else {
+        guard checkInput == SM.noError else {
             print(checkInput)
             return main()
         }
@@ -40,12 +40,12 @@ func main() {
 
 func shuffleCube() {
     let shuffledCube = cubeAction.getCubeShuffled(model.cubeSolved)
-    print(SystemMessage.cubeNow + model.cubeToString(shuffledCube))
+    print(SM.cubeNow + model.cubeToString(shuffledCube))
     model.startingCube = shuffledCube
 }
 
 func printInfo() {
-    print(SystemMessage.info)
+    print(SM.info)
 }
 
 
@@ -75,8 +75,8 @@ func getNewCube(with action: String, cube: [[String]]) -> [[String]] {
     
     let result = cubeAction.startAction(for: action, cube: cube)
     let resultToString = model.cubeToString(result)
-    SystemMessage.actionCount += 1
-    print(SystemMessage.successMessage(action, resultToString))
+    SM.actionCount += 1
+    print(SM.successMessage(action, resultToString))
     
     checkAnswer(for: result)
     return result
@@ -85,9 +85,9 @@ func getNewCube(with action: String, cube: [[String]]) -> [[String]] {
 
 //MARK: - 프로그램 종료 관련
 func checkQuit(for action: String) -> Bool {
-    if action == "Q" {
+    if action == SM.quit {
         calcTime(from: startTime)
-        print(SystemMessage.quitMessage)
+        print(SM.quitMessage)
         return true
     } else {
         return false
@@ -97,7 +97,7 @@ func checkQuit(for action: String) -> Bool {
 func checkAnswer(for cube: [[String]]) {
     if cube == model.cubeSolved {
         calcTime(from: startTime)
-        print(SystemMessage.doneMessage)
+        print(SM.doneMessage)
         exit(EXIT_SUCCESS)
     }
 }
@@ -109,7 +109,7 @@ func calcTime(from startTime: Int) {
     let minute = timeInSecond / 60
     let second = timeInSecond % 60
     
-    SystemMessage.getTimeMessageFrom(minute, second)
+    SM.getTimeMessageFrom(minute, second)
 }
 
 RunLoop.main.run()

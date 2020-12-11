@@ -1,5 +1,5 @@
 
-struct SystemMessage {
+struct SM {
     
     static let info = """
     ⚡️F/F' – 앞 (Front)          ⚡️B/B' – 뒤 (Back)
@@ -9,6 +9,10 @@ struct SystemMessage {
     🤹🏼SHUFFLE - 큐브 다시 섞기
     \n
     """
+    
+    static let quit = "Q"
+    static let help = "HELP"
+    static let shuffle = "SHUFFLE"
     
     static let cubeNow = "현재 큐브:\n"
     static let prompt = "CUBE👉🏻"

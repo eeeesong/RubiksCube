@@ -22,16 +22,16 @@ struct StepThree {
     //MARK: - 입력 액션 점검
     mutating func actionCheck(for input: String) -> String {
         
-        guard input != "" else { return SystemMessage.inputError }
+        guard input != "" else { return SM.inputError }
         
         let stringArray = makeStringArray(for: input)
         let filterArray = makeFilteredAction(for: stringArray)
         
         if filterArray == stringArray {
             actionList = filterArray
-            return SystemMessage.noError
+            return SM.noError
         } else {
-            return SystemMessage.actionError
+            return SM.actionError
         }
     }
     
