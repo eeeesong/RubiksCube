@@ -3,6 +3,8 @@
 struct CubeAction {
     
     let defaultAction = ["F","R","U","B","L","D"]
+    let reverseAction = ["F\'","R\'","U\'","B\'","L\'","D\'"]
+    let doubleAction = ["F2","R2","U2","B2","L2","D2"]
     
     //MARK: - 큐브 섞기
     func getCubeShuffled(_ cube: [[String]]) -> [[String]] {
@@ -20,30 +22,32 @@ struct CubeAction {
     
     //MARK: - 각 입력에 맞는 액션 수행
     func startAction(for action: String, cube: [[String]]) -> [[String]] {
-        let isReverse = defaultAction.contains(action) ? false : true
+        let isReverse = reverseAction.contains(action) ? true : false
+        let isDouble = doubleAction.contains(action) ? true : false
     
         switch action {
-        case "F","F\'":
-            return actionF(isReverse, cube)
-        case "B","B\'":
-            return actionB(isReverse, cube)
-        case "D","D\'":
-            return actionD(isReverse, cube)
-        case "U","U\'":
-            return actionU(isReverse, cube)
-        case "R","R\'":
-            return actionR(isReverse, cube)
-        case "L","L\'":
-            return actionL(isReverse, cube)
+        case "F","F\'","F2":
+            return actionF(isReverse, isDouble, cube)
+        case "B","B\'","B2":
+            return actionB(isReverse, isDouble, cube)
+        case "D","D\'","D2":
+            return actionD(isReverse, isDouble, cube)
+        case "U","U\'","U2":
+            return actionU(isReverse, isDouble, cube)
+        case "R","R\'","R2":
+            return actionR(isReverse, isDouble, cube)
+        case "L","L\'","L2":
+            return actionL(isReverse, isDouble, cube)
         default:
             return actionQ(cube)
         }
     }
     
     //MARK: - 큐브 액션
-    func actionF(_ isReverse: Bool,_ cube: [[String]]) -> [[String]] {
+    func actionF(_ isReverse: Bool,_ isDouble: Bool, _ cube: [[String]]) -> [[String]] {
         var cube = cube
-        let tryCount = isReverse ? 3 : 1
+        let times = isDouble ? 2 : 1
+        let tryCount = isReverse ? 3 : 1*times
         
         for _ in 1...tryCount {
             let temp = cube[2]
@@ -65,9 +69,10 @@ struct CubeAction {
         return cube
     }
     
-    func actionB(_ isReverse: Bool,_ cube: [[String]]) -> [[String]] {
+    func actionB(_ isReverse: Bool,_ isDouble: Bool, _ cube: [[String]]) -> [[String]] {
         var cube = cube
-        let tryCount = isReverse ? 3 : 1
+        let times = isDouble ? 2 : 1
+        let tryCount = isReverse ? 3 : 1*times
         
         for _ in 1...tryCount {
             let temp = cube[0]
@@ -89,9 +94,10 @@ struct CubeAction {
         return cube
     }
     
-    func actionR(_ isReverse: Bool,_ cube: [[String]]) -> [[String]] {
+    func actionR(_ isReverse: Bool,_ isDouble: Bool, _ cube: [[String]]) -> [[String]] {
         var cube = cube
-        let tryCount = isReverse ? 3 : 1
+        let times = isDouble ? 2 : 1
+        let tryCount = isReverse ? 3 : 1*times
         
         for _ in 1...tryCount {
             let temp = [cube[0][2],cube[1][2],cube[2][2]]
@@ -117,9 +123,10 @@ struct CubeAction {
         return cube
     }
     
-    func actionL(_ isReverse: Bool,_ cube: [[String]]) -> [[String]] {
+    func actionL(_ isReverse: Bool,_ isDouble: Bool, _ cube: [[String]]) -> [[String]] {
         var cube = cube
-        let tryCount = isReverse ? 3 : 1
+        let times = isDouble ? 2 : 1
+        let tryCount = isReverse ? 3 : 1*times
         
         for _ in 1...tryCount {
             let temp = [cube[0][0],cube[1][0],cube[2][0]]
@@ -145,9 +152,10 @@ struct CubeAction {
         return cube
     }
     
-    func actionU(_ isReverse: Bool,_ cube: [[String]]) -> [[String]] {
+    func actionU(_ isReverse: Bool,_ isDouble: Bool, _ cube: [[String]]) -> [[String]] {
         var cube = cube
-        let tryCount = isReverse ? 3 : 1
+        let times = isDouble ? 2 : 1
+        let tryCount = isReverse ? 3 : 1*times
 
         for _ in 1...tryCount {
             let temp = cube[3]
@@ -160,9 +168,10 @@ struct CubeAction {
         return cube
     }
     
-    func actionD(_ isReverse: Bool,_ cube: [[String]]) -> [[String]] {
+    func actionD(_ isReverse: Bool,_ isDouble: Bool, _ cube: [[String]]) -> [[String]] {
         var cube = cube
-        let tryCount = isReverse ? 3 : 1
+        let times = isDouble ? 2 : 1
+        let tryCount = isReverse ? 3 : 1*times
 
         for _ in 1...tryCount {
             let temp = cube[11]
