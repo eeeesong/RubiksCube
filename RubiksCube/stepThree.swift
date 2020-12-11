@@ -1,7 +1,7 @@
 
 struct StepThree {
     
-    var startingCube = [
+    let answerCube = [
                                 ["B", "B", "B"],
                                 ["B", "B", "B"],
                                 ["B", "B", "B"],
@@ -15,11 +15,12 @@ struct StepThree {
                                 ["R", "R", "R"]
     ]
     
+    var startingCube = [[String]]()
     var actionList = [String]()
     
     
     //MARK: - 큐브 섞기
-    func cubeShuffled() -> [[String]] {
+    mutating func cubeShuffled() -> [[String]] {
         let cubeCell = ["G","R","O","Y","B","W"]
         var allItem = [String]()
         
@@ -39,6 +40,7 @@ struct StepThree {
             }
             newCube.append(line)
         }
+        startingCube = newCube
         return newCube
     }
 

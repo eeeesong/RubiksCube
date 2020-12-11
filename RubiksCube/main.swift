@@ -49,13 +49,22 @@ func getNewCube(with action: String, cube: [[String]]) -> [[String]] {
         print(SystemMessage.quit)
         exit(EXIT_SUCCESS)
     }
+    
     let result = cubeAction.startAction(for: action, cube: cube)
     let resultToString = model.cubeToString(result)
-    print(SystemMessage.successMessage(action, resultToString))
     SystemMessage.actionCount += 1
+    print(SystemMessage.successMessage(action, resultToString))
+    
+    checkAnswer(for: result)
     return result
 }
 
+func checkAnswer(for cube: [[String]]) {
+    if cube == model.startingCube {
+        print(SystemMessage.doneMessage)
+        exit(EXIT_SUCCESS)
+    }
+}
 
 RunLoop.main.run()
 
