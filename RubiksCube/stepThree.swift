@@ -40,12 +40,10 @@ struct StepThree {
         var stringArray = text.map{ $0.uppercased() }
         
         for (i,v) in stringArray.enumerated() {
-            if v == "'" && i > 0 {
+            if v == "'" || v == "2", i > 0 {
                 stringArray[i-1].append(v)
                 stringArray[i] = "delete"
-            } else if v == "2" && i > 0 {
-                stringArray[i] = stringArray[i-1]
-            } //2가 입력될 경우 앞의 액션을 한번 더 실행
+            }
         }
         stringArray = stringArray.filter{ $0 != "delete" }
         return stringArray
@@ -54,7 +52,13 @@ struct StepThree {
     
     func makeFilteredAction(for array: [String]) -> [String] {
         var filterArray = [String]()
-        let allAction = ["F","F\'","R","R\'","U","U\'","B","B\'","L","L\'","D","D\'","Q"]
+        let allAction = ["F","F\'","F2",
+                         "R","R\'","R2",
+                         "U","U\'","U2",
+                         "B","B\'","B2",
+                         "L","L\'","L2",
+                         "D","D\'","D2",
+                         "Q"]
         
         filterArray = array.filter {(s: String) -> Bool in
             return allAction.contains(s)
