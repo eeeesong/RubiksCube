@@ -37,7 +37,7 @@ struct StepThree {
     
     
     func makeStringArray(for text: String) -> [String] {
-        var stringArray = text.components(separatedBy: "")
+        var stringArray = text.map{ String($0) }
         
         for (i,v) in stringArray.enumerated() {
             if v == "'" || v == "2", i > 0 {

@@ -26,6 +26,8 @@ func main() {
     case SM.shuffle:
         shuffleCube()
         main()
+    case SM.timeSet:
+        delayTimeSet()
     default:
         let checkInput = model.actionCheck(for: inputUppercased)
         
@@ -48,20 +50,35 @@ func printInfo() {
     print(SM.info)
 }
 
+func delayTimeSet() {
+    print(SM.timeSetprompt, terminator: "")
+    
+    let input = readLine() ?? ""
+    
+    guard Double(input) != nil,
+          Double(input)! >= 0 else {
+        return delayTimeSet()
+    }
+    
+    SM.timeDelay = Double(input)!
+    print(SM.timeDelayMessage)
+    main()
+}
 
 //MARK: - 큐브 액션 수행 관련
 func changeCube(for cube: [[String]], actionList: [String]) {
     var cubeNow = cube
     var delayAmount = 0.0
-    let totalDelayAmount = Double(actionList.count)
+    let userTimeDelay = SM.timeDelay
+    let totalDelayAmount = Double(actionList.count-1) * userTimeDelay
     
     for action in actionList {
         Timer.scheduledTimer(withTimeInterval: delayAmount , repeats: false) { (timer) in
             cubeNow = getNewCube(with: action, cube: cubeNow)
         }
-        delayAmount += 1
+        delayAmount += userTimeDelay
     }
-    Timer.scheduledTimer(withTimeInterval: totalDelayAmount-1, repeats: false) { (timer) in
+    Timer.scheduledTimer(withTimeInterval: totalDelayAmount, repeats: false) { (timer) in
         model.startingCube = cubeNow
         main()
     }

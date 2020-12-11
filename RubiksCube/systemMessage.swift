@@ -7,21 +7,25 @@ struct SM {
     ⚡️U/U' – 위 (Up)             ⚡️D/D' – 아랫쪽 (Down)
     🙋Q - 프로그램 종료             ❓HELP - 도움말
     🤹🏼SHUFFLE - 큐브 다시 섞기
-    \n
+    ⏰TIME - 출력 사이의 시간 설정\n
     """
     
     static let quit = "Q"
     static let help = "HELP"
     static let shuffle = "SHUFFLE"
+    static let timeSet = "TIME"
     
     static let cubeNow = "현재 큐브:\n"
     static let prompt = "CUBE👉🏻"
+    static let timeSetprompt = "0 이상의 수를 입력해주세요👉🏻"
+    static var timeDelayMessage = "딜레이가 \(timeDelay)초로 설정되었습니다!\n"
 
     static let inputError = "\nError😯 값을 입력해주세요\n\n" + info
     static let actionError = "\nError😯 - 올바른 값을 입력해주세요\n\n" + info
     static let noError = "정상 작동"
     
     static var actionCount = 0
+    static var timeDelay = 1.0
     static var time = "0분 0초"
     
     static func successMessage(_ action: String, _ result: String) -> String {
