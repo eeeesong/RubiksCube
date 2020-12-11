@@ -2,6 +2,23 @@
 
 struct CubeAction {
     
+    
+    func getCubeShuffled(_ cube: [[String]]) -> [[String]] {
+        
+        var newCube = cube
+        let allAction = ["F","R","U","B","L","D"]
+        let randomNumber = Int.random(in: 50...200)
+        
+        var actionArray = Array(repeating: "X", count: randomNumber)
+        
+        for n in 0...randomNumber-1 {
+            actionArray[n] = allAction.randomElement()!
+            newCube = startAction(for: actionArray[n], cube: newCube)
+        }
+        return newCube
+    }
+    
+    
     func startAction(for action: String, cube: [[String]]) -> [[String]] {
         
         switch action {

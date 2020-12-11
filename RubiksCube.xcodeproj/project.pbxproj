@@ -11,6 +11,7 @@
 		E48657FA25807332005EBB58 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48657F925807332005EBB58 /* main.swift */; };
 		E48AA7382581A7DF00DC660F /* stepThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48AA7372581A7DF00DC660F /* stepThree.swift */; };
 		E48AA73C2581BE5700DC660F /* cubeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48AA73B2581BE5700DC660F /* cubeAction.swift */; };
+		E48AA74025832CC800DC660F /* temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48AA73F25832CC800DC660F /* temp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,7 @@
 		E48657F925807332005EBB58 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E48AA7372581A7DF00DC660F /* stepThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stepThree.swift; sourceTree = "<group>"; };
 		E48AA73B2581BE5700DC660F /* cubeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cubeAction.swift; sourceTree = "<group>"; };
+		E48AA73F25832CC800DC660F /* temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				E48AA7372581A7DF00DC660F /* stepThree.swift */,
 				E48AA73B2581BE5700DC660F /* cubeAction.swift */,
 				E47A98692580A36F00A1550B /* systemMessage.swift */,
+				E48AA73F25832CC800DC660F /* temp.swift */,
 			);
 			path = RubiksCube;
 			sourceTree = "<group>";
@@ -132,6 +135,7 @@
 				E48657FA25807332005EBB58 /* main.swift in Sources */,
 				E48AA7382581A7DF00DC660F /* stepThree.swift in Sources */,
 				E47A986A2580A36F00A1550B /* systemMessage.swift in Sources */,
+				E48AA74025832CC800DC660F /* temp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

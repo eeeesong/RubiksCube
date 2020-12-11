@@ -25,7 +25,9 @@ struct SystemMessage {
         return "\n액션 \(action)(을)를 적용한 큐브:\n\(result)"
     }
     
-    static func doneMessage() -> String {
-        return "축하합니다! \(actionCount)번 만에 모든 면을 맞추셨네요."
-    }
+    static let doneMessage = """
+    ✨   축하합니다!  ✨
+    ✨   \(actionCount)번 만에 모든 면을 맞추셨어요!  ✨
+    ✨   당신은 큐브의 천재인가요?  ✨
+    """
 }

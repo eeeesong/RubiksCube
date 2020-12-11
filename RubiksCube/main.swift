@@ -4,8 +4,11 @@ import Foundation
 var model = StepThree()
 var cubeAction = CubeAction()
 
+let shuffledCube = cubeAction.getCubeShuffled(model.cubeSolved)
+model.startingCube = shuffledCube
+
 print(SystemMessage.info)
-print(SystemMessage.cubeNow + model.cubeToString(model.cubeShuffled()))
+print(SystemMessage.cubeNow + model.cubeToString(shuffledCube))
 
 main()
 
@@ -60,7 +63,7 @@ func getNewCube(with action: String, cube: [[String]]) -> [[String]] {
 }
 
 func checkAnswer(for cube: [[String]]) {
-    if cube == model.startingCube {
+    if cube == model.cubeSolved {
         print(SystemMessage.doneMessage)
         exit(EXIT_SUCCESS)
     }
