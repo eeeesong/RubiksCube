@@ -5,29 +5,47 @@ var model = StepThree()
 var cubeAction = CubeAction()
 
 let startTime = Int(Date().timeIntervalSince1970)
-let shuffledCube = cubeAction.getCubeShuffled(model.cubeSolved)
 
-model.startingCube = shuffledCube
-
-print(SystemMessage.info)
-print(SystemMessage.cubeNow + model.cubeToString(shuffledCube))
+printInfo()
+shuffleCube()
 
 main()
 
 
+//MARK: - 명령 입력 관련
 func main() {
     print(SystemMessage.prompt, terminator: "")
     
     let input = readLine() ?? ""
-    let checkInput = model.actionCheck(for: input)
+    let inputUppercased = input.uppercased()
     
-    guard checkInput == SystemMessage.noError else {
-        print(checkInput)
-        return main()
+    switch inputUppercased {
+    case "HELP":
+        printInfo()
+        main()
+    case "SHUFFLE":
+        shuffleCube()
+        main()
+    default:
+        let checkInput = model.actionCheck(for: inputUppercased)
+        
+        guard checkInput == SystemMessage.noError else {
+            print(checkInput)
+            return main()
+        }
+        let actionList = model.actionList
+        changeCube(for: model.startingCube, actionList: actionList)
     }
+}
 
-    let actionList = model.actionList
-    changeCube(for: model.startingCube, actionList: actionList)
+func shuffleCube() {
+    let shuffledCube = cubeAction.getCubeShuffled(model.cubeSolved)
+    print(SystemMessage.cubeNow + model.cubeToString(shuffledCube))
+    model.startingCube = shuffledCube
+}
+
+func printInfo() {
+    print(SystemMessage.info)
 }
 
 

@@ -2,13 +2,12 @@
 struct SystemMessage {
     
     static let info = """
-    ⚡️F/F' – 앞 (Front)
-    ⚡️R/R' – 오른쪽 (Right)
-    ⚡️U/U' – 위 (Up)
-    ⚡️B/B' – 뒤 (Back)
-    ⚡️L/L' – 왼쪽 (Left)
-    ⚡️D/D' – 아랫쪽 (Down)
-    🙋Q - 프로그램 종료\n
+    ⚡️F/F' – 앞 (Front)          ⚡️B/B' – 뒤 (Back)
+    ⚡️R/R' – 오른쪽 (Right)       ⚡️L/L' – 왼쪽 (Left)
+    ⚡️U/U' – 위 (Up)             ⚡️D/D' – 아랫쪽 (Down)
+    🙋Q - 프로그램 종료             ❓HELP - 도움말
+    🤹🏼SHUFFLE - 큐브 다시 섞기
+    \n
     """
     
     static let cubeNow = "현재 큐브:\n"
