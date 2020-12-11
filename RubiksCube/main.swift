@@ -5,7 +5,7 @@ var model = StepThree()
 var cubeAction = CubeAction()
 
 print(SystemMessage.info)
-print(SystemMessage.cubeNow + model.cubeToString(model.startingCube))
+print(SystemMessage.cubeNow + model.cubeToString(model.cubeShuffled()))
 
 main()
 
@@ -58,3 +58,4 @@ func getNewCube(with action: String, cube: [[String]]) -> [[String]] {
 
 
 RunLoop.main.run()
+

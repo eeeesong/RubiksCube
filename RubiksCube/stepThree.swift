@@ -18,6 +18,31 @@ struct StepThree {
     var actionList = [String]()
     
     
+    //MARK: - 큐브 섞기
+    func cubeShuffled() -> [[String]] {
+        let cubeCell = ["G","R","O","Y","B","W"]
+        var allItem = [String]()
+        
+        for _ in 1...9 {
+            allItem.append(contentsOf: cubeCell)
+        }
+        
+        var shuffledItem = allItem.shuffled()
+        var newCube = [[String]]()
+        
+        for _ in 1...18 {
+            var line = [String]()
+            
+            for _ in 1...3 {
+                line.append(shuffledItem[0])
+                shuffledItem.removeFirst()
+            }
+            newCube.append(line)
+        }
+        return newCube
+    }
+
+    
     //MARK: - input의 유효성 체크, 액션 리스트 만들기
     mutating func actionCheck(for input: String) -> String {
         
