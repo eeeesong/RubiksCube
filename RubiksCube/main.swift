@@ -51,8 +51,8 @@ func changeCube(for cube: [[String]], actionList: [String]) {
 
 func getNewCube(with action: String, cube: [[String]]) -> [[String]] {
     guard action != "Q" else {
-        print(SystemMessage.quit)
-        print(calcTime(from: startTime))
+        calcTime(from: startTime)
+        print(SystemMessage.quitMessage)
         exit(EXIT_SUCCESS)
     }
     
@@ -67,19 +67,20 @@ func getNewCube(with action: String, cube: [[String]]) -> [[String]] {
 
 func checkAnswer(for cube: [[String]]) {
     if cube == model.cubeSolved {
+        calcTime(from: startTime)
         print(SystemMessage.doneMessage)
         exit(EXIT_SUCCESS)
     }
 }
 
-func calcTime(from startTime: Int) -> String {
+func calcTime(from startTime: Int) {
     let endTime = Int(Date().timeIntervalSince1970)
     
     let timeInSecond = endTime - startTime
     let minute = timeInSecond / 60
     let second = timeInSecond % 60
     
-    return "경과 시간: \(minute):\(second)"
+    SystemMessage.getTimeMessageFrom(minute, second)
 }
 
 RunLoop.main.run()
