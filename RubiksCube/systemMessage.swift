@@ -15,7 +15,12 @@ struct SM {
     
     static func successMessage(_ word: String, _ moveBy: String, _ direction: String,
                                _ result: String) -> String {
-        return "👉🏻 \(word)가 \(moveBy)만큼 \(direction) 방향으로 움직입니다.\n결과: \(result)"
+        return """
+
+            👉🏻 \(word)가 \(moveBy)만큼 \(direction) 방향으로 움직입니다.
+            결과: \(result)
+
+            """
     }
     
 }

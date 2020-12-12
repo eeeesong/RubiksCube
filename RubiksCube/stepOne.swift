@@ -1,6 +1,4 @@
 
-import Foundation
-
 struct StepOne {
     
     func checkInput(for input: String) -> [String] {
