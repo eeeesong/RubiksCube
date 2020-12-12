@@ -1,6 +1,10 @@
 
 struct SM {
     
+    //MARK: - 시작/기본
+    static let prompt = "CUBE👉🏻"
+    static let cubeNow = "현재 큐브:\n"
+    
     static let info = """
     ⚡️F/F' – 앞 (Front)          ⚡️B/B' – 뒤 (Back)
     ⚡️R/R' – 오른쪽 (Right)       ⚡️L/L' – 왼쪽 (Left)
@@ -15,25 +19,22 @@ struct SM {
     static let shuffle = "SHUFFLE"
     static let timeSet = "TIME"
     
-    static let cubeNow = "현재 큐브:\n"
-    static let prompt = "CUBE👉🏻"
+    
+    //MARK: - 시간 관련
     static let timeSetprompt = "0 이상의 수를 입력해주세요👉🏻"
+    static var timeDelay = 0.1
     static var timeDelayMessage = "딜레이가 \(timeDelay)초로 설정되었습니다!\n"
-
-    static let inputError = "\nError😯 값을 입력해주세요\n\n" + info
-    static let actionError = "\nError😯 - 올바른 값을 입력해주세요\n\n" + info
-    static let noError = "정상 작동"
     
-    static var actionCount = 0
-    static var timeDelay = 1.0
     static var time = "0분 0초"
-    
-    static func successMessage(_ action: String, _ result: String) -> String {
-        return "\n액션 \(action)(을)를 적용한 큐브:\n\(result)"
-    }
-    
     static func getTimeMessageFrom(_ minute: Int, _ second: Int) {
         time = "\(minute)분 \(second)초"
+    }
+    
+    
+    //MARK: - 진행/종료
+    static var actionCount = 0
+    static func actionMessage(_ action: String, _ result: String) -> String {
+        return "\n액션 \(action)(을)를 적용한 큐브:\n\(result)"
     }
     
     static let quitMessage = """
@@ -50,4 +51,9 @@ struct SM {
     ✨   당신은 큐브의 천재인가요?  ✨
 
     """
+    
+    //MARK: - 에러 관련
+    static let inputError = "\nError😯 값을 입력해주세요\n\n" + info
+    static let actionError = "\nError😯 - 올바른 값을 입력해주세요\n\n" + info
+    static let noError = "정상 작동"
 }

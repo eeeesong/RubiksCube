@@ -29,14 +29,7 @@ func main() {
     case SM.timeSet:
         delayTimeSet()
     default:
-        let checkInput = model.actionCheck(for: inputUppercased)
-        
-        guard checkInput == SM.noError else {
-            print(checkInput)
-            return main()
-        }
-        let actionList = model.actionList
-        changeCube(for: model.startingCube, actionList: actionList)
+        getAction(from: inputUppercased)
     }
 }
 
@@ -65,8 +58,21 @@ func delayTimeSet() {
     main()
 }
 
+func getAction(from input: String){
+    let checkInput = model.actionCheck(for: input)
+    
+    guard checkInput == SM.noError else {
+        print(checkInput)
+        return main()
+    }
+    let actionList = model.actionList
+    changeCube(for: model.startingCube, with: actionList)
+}
+
+
+
 //MARK: - 큐브 액션 수행 관련
-func changeCube(for cube: [[String]], actionList: [String]) {
+func changeCube(for cube: [[String]], with actionList: [String]) {
     var cubeNow = cube
     var delayAmount = 0.0
     let userTimeDelay = SM.timeDelay
@@ -86,28 +92,26 @@ func changeCube(for cube: [[String]], actionList: [String]) {
 
 
 func getNewCube(with action: String, cube: [[String]]) -> [[String]] {
-    guard !checkQuit(for: action) else {
-        exit(EXIT_SUCCESS)
-    }
     
-    let result = cubeAction.startAction(for: action, cube: cube)
+    checkQuit(for: action)
+    
+    let result = cubeAction.startAction(action, cube)
     let resultToString = model.cubeToString(result)
     SM.actionCount += 1
-    print(SM.successMessage(action, resultToString))
+    print(SM.actionMessage(action, resultToString))
     
     checkAnswer(for: result)
     return result
 }
 
 
+
 //MARK: - 프로그램 종료 관련
-func checkQuit(for action: String) -> Bool {
+func checkQuit(for action: String) {
     if action == SM.quit {
         calcTime(from: startTime)
         print(SM.quitMessage)
-        return true
-    } else {
-        return false
+        exit(EXIT_SUCCESS)
     }
 }
 
@@ -130,4 +134,3 @@ func calcTime(from startTime: Int) {
 }
 
 RunLoop.main.run()
-
