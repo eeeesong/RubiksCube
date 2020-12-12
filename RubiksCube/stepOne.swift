@@ -16,7 +16,6 @@ struct StepOne {
     
     
     func checkAction(for inputList: [String]) -> Bool {
-
         let moveBy = inputList[1]
         let direction = inputList[2].uppercased()
 
@@ -26,15 +25,13 @@ struct StepOne {
         else {
             return false
         }
-    
         return true
     }
     
     
-    func getResult(word: String, moveBy: Int, direction: String) -> String {
+    func getResult(from word: String, by moveBy: Int, to direction: String) -> String {
 
         let remainder = abs(moveBy) % word.count
-        
         if remainder == 0 { return word } //변동 없는 경우 그대로 출력
         
         var characterArray = word.map{ $0 }
@@ -49,9 +46,7 @@ struct StepOne {
             characterArray.removeLast()
             moveCount += 1
         }
-
-        let result: String = characterArray.reduce(""){ String($0) + String($1) }
-        
+        let result = characterArray.reduce(""){ String($0) + String($1) }
         return result
     }
 }
