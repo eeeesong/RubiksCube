@@ -45,7 +45,6 @@ struct CubeAction {
     //MARK: - 큐브 액션
     func actionF(_ tryCount: Int, _ cube: [[String]]) -> [[String]] {
         var cube = cube
-        
         for _ in 1...tryCount {
             let temp = cube[2]
             
@@ -68,7 +67,6 @@ struct CubeAction {
     
     func actionB(_ tryCount: Int, _ cube: [[String]]) -> [[String]] {
         var cube = cube
-        
         for _ in 1...tryCount {
             let temp = cube[0]
             
@@ -91,10 +89,8 @@ struct CubeAction {
     
     func actionR(_ tryCount: Int, _ cube: [[String]]) -> [[String]] {
         var cube = cube
-        
         for _ in 1...tryCount {
             let temp = [cube[0][2],cube[1][2],cube[2][2]]
-            
             cube[0][2] = cube[4][2]
             cube[1][2] = cube[8][2]
             cube[2][2] = cube[12][2]
@@ -110,7 +106,6 @@ struct CubeAction {
             cube[14][0] = temp[0]
             cube[10][0] = temp[1]
             cube[6][0] = temp[2]
-            
             cube = rotateInside(cube, startAt: 5)
         }
         return cube
@@ -118,10 +113,8 @@ struct CubeAction {
     
     func actionL(_ tryCount: Int, _ cube: [[String]]) -> [[String]] {
         var cube = cube
-        
         for _ in 1...tryCount {
             let temp = [cube[0][0],cube[1][0],cube[2][0]]
-            
             cube[0][0] = cube[14][2]
             cube[1][0] = cube[10][2]
             cube[2][0] = cube[6][2]
@@ -137,7 +130,6 @@ struct CubeAction {
             cube[4][0] = temp[0]
             cube[8][0] = temp[1]
             cube[12][0] = temp[2]
-            
             cube = rotateInside(cube, startAt: 3)
         }
         return cube
