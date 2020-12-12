@@ -1,5 +1,5 @@
 
-struct SystemMessage {
+struct SM {
     
     static let info = """
     ⚡️R/R': 가장 오른쪽 줄 이동
@@ -11,9 +11,9 @@ struct SystemMessage {
     
     static let startingCube = """
     \n현재 큐브:
-      R  R  W
-      G  C  W
-      G  B  B
+     R R W
+     G C W
+     G B B
     """
     
     static let prompt = "\nCUBE👉🏻"

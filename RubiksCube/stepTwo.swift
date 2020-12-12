@@ -1,6 +1,4 @@
 
-import Foundation
-
 struct StepTwo {
     
     var startingCube = [
@@ -15,16 +13,16 @@ struct StepTwo {
     //MARK: - input의 유효성 체크, 액션 리스트 만들기
     mutating func actionCheck(for input: String) -> String {
         
-        guard input != "" else { return SystemMessage.inputError }
+        guard input != "" else { return SM.inputError }
         
         let stringArray = makeStringArray(for: input)
         let filterArray = makeFilteredAction(for: stringArray)
         
         if filterArray == stringArray {
             actionList = filterArray
-            return SystemMessage.noError
+            return SM.noError
         } else {
-            return SystemMessage.actionError
+            return SM.actionError
         }
     }
     
@@ -36,7 +34,7 @@ struct StepTwo {
             if v == "'" && i > 0 {
                 stringArray[i-1].append(v)
                 stringArray[i] = "delete"
-            } //리버스 입력을 받은 경우 '를 앞의 문자에 붙이고 "delete" 삽입. 그냥 삭제할 경우 index 오류 발생 
+            }
         }
         stringArray = stringArray.filter{ $0 != "delete" }
         return stringArray
@@ -55,31 +53,37 @@ struct StepTwo {
     
     
     //MARK: - 큐브 액션
-    func startAction(for action: String, cube: [[String]]) -> [[String]] {
+    func startAction(with action: String, for cube: [[String]]) -> [[String]] {
+        let reverseAction = ["U\'","R\'","L\'","B\'"]
+        let isReverse = reverseAction.contains(action) ? true : false
 
         switch action {
-        case "U":
-            return actionU(isReverse: false, cube: cube)
-        case "U'":
-            return actionU(isReverse: true, cube: cube)
-        case "R":
-            return actionR(isReverse: false, cube: cube)
-        case "R'":
-            return actionR(isReverse: true, cube: cube)
-        case "L":
-            return actionL(isReverse: false, cube: cube)
-        case "L'":
-            return actionL(isReverse: true, cube: cube)
-        case "B":
-            return actionB(isReverse: false, cube: cube)
-        case "B'":
-            return actionB(isReverse: true, cube: cube)
+        case "B","B'":
+            return actionB(isReverse, cube)
+        case "U","U'":
+            return actionU(isReverse, cube)
+        case "R","R'":
+            return actionR(isReverse, cube)
+        case "L","L'":
+            return actionL(isReverse, cube)
+
         default:
-            return actionQ(cube: cube)
+            return cube
         }
     }
     
-    func actionU(isReverse: Bool, cube: [[String]]) -> [[String]] {
+    
+    func actionB(_ isReverse: Bool,_ cube: [[String]]) -> [[String]] {
+        var cube = cube
+        let tryCount = isReverse ? 2 : 1
+        for _ in 1...tryCount {
+            cube[2].insert(cube[2][2], at: 0)
+            cube[2].removeLast()
+        }
+        return cube
+    }
+    
+    func actionU(_ isReverse: Bool,_ cube: [[String]]) -> [[String]] {
         var cube = cube
         let tryCount = isReverse ? 1 : 2
         for _ in 1...tryCount {
@@ -89,7 +93,7 @@ struct StepTwo {
         return cube
     }
 
-    func actionR(isReverse: Bool, cube: [[String]]) -> [[String]] {
+    func actionR(_ isReverse: Bool,_ cube: [[String]]) -> [[String]] {
         var cube = cube
         let tryCount = isReverse ? 2 : 1
         for _ in 1...tryCount {
@@ -103,7 +107,7 @@ struct StepTwo {
         return cube
     }
 
-    func actionL(isReverse: Bool, cube: [[String]]) -> [[String]] {
+    func actionL(_ isReverse: Bool,_ cube: [[String]]) -> [[String]] {
         var cube = cube
         let tryCount = isReverse ? 1 : 2
         for _ in 1...tryCount {
@@ -117,27 +121,12 @@ struct StepTwo {
         return cube
     }
 
-    func actionB(isReverse: Bool, cube: [[String]]) -> [[String]] {
-        var cube = cube
-        let tryCount = isReverse ? 2 : 1
-        for _ in 1...tryCount {
-            cube[2].insert(cube[2][2], at: 0)
-            cube[2].removeLast()
-        }
-        return cube
-    }
-    
-    func actionQ(cube: [[String]]) -> [[String]] {
-        return cube
-    }
-    
-    
     //MARK: - 큐브 -> 문자열
     func cubeToString(_ cube: [[String]]) -> String {
         
-        let firstLine = cube[0].reduce(""){ $0 + "  " + $1 }
-        let secondLine = cube[1].reduce(""){ $0 + "  " + $1 }
-        let lastLine = cube[2].reduce(""){ $0 + "  " + $1 }
+        let firstLine = cube[0].reduce(""){ $0 + " " + $1 }
+        let secondLine = cube[1].reduce(""){ $0 + " " + $1 }
+        let lastLine = cube[2].reduce(""){ $0 + " " + $1 }
         
         return firstLine + "\n" + secondLine + "\n" + lastLine
     }
