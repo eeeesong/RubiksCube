@@ -152,9 +152,9 @@ let result = model.getResult(from: word, by: Int(moveBy)!, to: direction)
 
 그 외의 경우는 word의 각 문자를 담은 배열을 조작하는 방식으로 구현하였습니다.<br>
 
-움직이는 방향은 `direction`이 R(정방향)일 땐 `moveBy`의 부호를 변경하지 않고, L(역방향)일 경우 `moveBy`에 -1을 곱해 부호를 전환하여 leftOrRight에 지정하였습니다.<br>만약 `leftOrRight`이 정방향(양수)인 경우 위에서 구한 `remainder`만큼 움직이고, 역방향(음수)인 경우 `word`의 글자수에서 `remainder`를 뺀 만큼 움직이는 것으로 하여 `moveAmount`에 지정하였습니다.<br>
+움직이는 방향은 `direction`이 R(정방향)일 땐 `moveBy`의 부호를 변경하지 않고, L(역방향)일 경우 `moveBy`에 -1을 곱해 부호를 전환하여 `leftOrRight`에 지정하였습니다.<br>만약 `leftOrRight`이 정방향(양수)인 경우 위에서 구한 `remainder`만큼 움직이고, 역방향(음수)인 경우 `word`의 글자수에서 `remainder`를 뺀 만큼 움직이는 것으로 하여 `moveAmount`에 지정하였습니다.<br>
 
-> APPLE을 1만큼 움직이는 경우와 -4만큼 움직이는 경우가 같기 때문에(EAPPL) 위의 방식으로 계산하였습니다.
+(APPLE을 1만큼 움직이는 경우와 -4만큼 움직이는 경우가 같기 때문에(EAPPL) 위의 방식으로 계산하였습니다.)
 
 <br>
 
